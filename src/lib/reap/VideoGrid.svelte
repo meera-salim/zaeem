@@ -1,5 +1,5 @@
 <script>
-    import FilterComponent from './FilterComponent.svelte';
+    import FilterComponent from './ApplyFilterComponent.svelte';
 import VideoPod from './VideoPod.svelte'
     import {videos} from './data.js'
     

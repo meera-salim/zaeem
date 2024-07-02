@@ -1,10 +1,9 @@
 <script>
   import { createEventDispatcher, onMount } from "svelte";
   const dispatch = createEventDispatcher();
-  
+
 
   export let filter;
-  console.log(filter.data);
   export let selectedItemId = "";
   export let selectedItemName = "";
   let filterData = filter.data;
@@ -21,13 +20,8 @@
     // selectedItemName=filter.data[0].state
   });
 
-  function test() {
-    filterData.map((data) => console.log(data.id));
-  }
-
-  test();
-
   let searchFilterValue = "";
+
 
   $: handleSearch(searchFilterValue);
   function handleSearch() {
@@ -42,12 +36,24 @@
     e.preventDefault();
     selectedItemId = e.target.closest("li").dataset.id;
     selectedItemName = e.target.textContent;
+    searchFilterValue=selectedItemName;
     showDropdown = false;
+  
+    dispatch('handleDispatchFilterData', {[filter.filterCategory]:{selectedItemId,selectedItemName}})
   }
 
   function clearSelection() {
     showDropdown = false;
     selectedItemName = "";
+    selectedItemId =""
+    searchFilterValue=''
+    dispatch('handleDispatchFilterData', {[filter.filterCategory]:{}})
+
+    
+  }
+
+  function handleShowDropDown (value){
+    showDropdown = value;
   }
 </script>
 
@@ -55,7 +61,7 @@
   {#if filter.typeOfFilter === "comboBox"}
     <label
       for="combobox"
-      class="block text-sm font-medium leading-6 text-gray-900"
+      class="block text-sm font-medium leading-5 text-gray-900 capitalize"
       >{filter.filterCategory}</label
     >
     <div
@@ -63,14 +69,10 @@
       bind:this={dropDownRef}
     >
       <input
-        id="combobox"
-        type="text"
-        class="combobox w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        role="combobox"
-        aria-controls="options"
-        aria-expanded="false"
-        placeholder={selectedItemName ? selectedItemName : "Search"}
+        id="combobox" type="text" class="capitalize w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " role="combobox" aria-controls="options" aria-expanded="false"
+        placeholder= {`Search ${filter.filterCategory}`}
         bind:value={searchFilterValue}
+       
       />
       {#if selectedItemName}
         <button
@@ -98,7 +100,7 @@
       <button
         type="button"
         class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
-        on:focus={() => (showDropdown = true)}
+        on:click={() => (()=>handleShowDropDown(true))}
       >
         <svg
           class="h-5 w-5 text-gray-400"
@@ -136,6 +138,7 @@
                 {#if selectedItemId == data.id}
                   <span
                     class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600"
+                  
                   >
                     <svg
                       class="h-5 w-5"

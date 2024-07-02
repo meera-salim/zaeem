@@ -1,3 +1,5 @@
+
+
 export const videos = [
     {
 "id": 1,
@@ -7,8 +9,13 @@ export const videos = [
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": true
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": true, 
+'stateId':1,
+'RSETIId':1,
+'statusId': 1,
+'modeId':1,
+
 },
 {
 "id": 2,
@@ -19,44 +26,60 @@ export const videos = [
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/771796",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": true
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": true,
+'stateId':1,
+'RSETIId':3,
+'statusId': 2,
+'modeId':2,
 },
 {
 "id": 3,
 "categoryId": 'agri-prog',
-"title": "Agricultural",
+"title": "Agricultural -Animal Husbandry",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/24f355",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": false
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": false,
+'stateId':2,
+'RSETIId':2,
+'statusId': 1,
+'modeId':2,
 },
 {
 "id": 4,
 "categoryId": 'process-prog',
-"title": "Process",
+"title": "Process - Welding",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/d32776",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": false
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": false,
+'stateId':2,
+'RSETIId':2,
+'statusId': '1',
+'modeId':3,
 },
 {
 "id": 5,
 "categoryId": 'process-prog',
-"title": "Process",
+"title": "Process - Carpentry",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/f66b97",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": true
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": true,
+'stateId':1,
+'RSETIId':1,
+'statusId': 2,
+'modeId':3,
 },
 {
 "id": 6,
@@ -65,65 +88,85 @@ export const videos = [
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "categoryId": 'process-prog',
-"title": "Process",
+"title": "Process - Brass Polishing",
 "url": "https://via.placeholder.com/600/56a8c2",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": true
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": true,
+'stateId':2,
+'RSETIId':4,
+'statusId': 2,
+'modeId':1,
 },
 {
 "id": 7,
 "categoryId": 'process-prog',
-"title": "Process",
+"title": "Process - DeSalination",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/b0f7cc",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": false
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": false,
+'stateId':5,
+'RSETIId':1,
+'statusId': 1,
+'modeId':1,
 },
 {
 "id": 8,
 "categoryId": 'product-prog',
-"title": "Product",
+"title": "Product - Organic Products",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/54176f",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": false
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": false,
+'stateId':3,
+'RSETIId':4,
+'statusId': 2,
+'modeId':2,
 },
 {
 "id": 9,
 "categoryId": 'product-prog',
-"title": "Product",
+"title": "Product - Khadi Artefacts",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/51aa97",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": false
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": false,
+'stateId':5,
+'RSETIId':1,
+'statusId': 2,
+'modeId':2,
 },
 {
 "id": 10,
 "categoryId": 'product-prog',
-"title": "Product",
+"title": "Product - Forest Produces",
 'courseName':'Course Tile',
 'description':'description',
 'numberOfVideos' : '15',
 'duration' : '3h 54mins',
 "url": "https://via.placeholder.com/600/810b14",
-"thumbnailUrl": "https://getdummyimage.com/800/400",
-"watched": true
+"thumbnailUrl": "https://placehold.co/600x400",
+"watched": true,
+'stateId':4,
+'RSETIId':5,
+'statusId': 1,
+'modeId':3,
 },
 ]
 
 export const filters =[
     {  
         'categoryId':1,
-        'filterCategory':'State',
+        'filterCategory':'state',
         'data':[{
             'id':1,
             'item': 'Rajasthan',
@@ -143,7 +186,8 @@ export const filters =[
             'id':5,
             'item': 'Telengana',
         }],
-        'typeOfFilter':'comboBox'
+        'typeOfFilter':'comboBox',
+        'searchable':true,
 
 
     },
@@ -169,8 +213,44 @@ export const filters =[
             'id':5,
             'item': 'Indira Gandhi Skilling centre for Women',
         }],
-        'typeOfFilter':'comboBox'
+        'typeOfFilter':'comboBox',
+        'searchable':true,
 
 
-    }
+    },
+    {
+        'categoryId':3,
+        'filterCategory':'status',
+        'data':[{
+            'id':1,
+            'item': 'active',
+        },
+    {
+        'id':2,
+        'item': 'inactive',
+    }],
+    'typeOfFilter':'dropDown',
+    'searchable':false,
+    },
+
+    {
+        'categoryId':4,
+        'filterCategory':'mode',
+        'data':[{
+            'id':1,
+            'item': 'online',
+        },
+    {
+        'id':2,
+        'item': 'offline',
+    },
+    {
+        'id':3,
+        'item': 'hybrid',
+    }],
+
+    'typeOfFilter':'multiSelectComboBox',
+    'searchable':false, 
+    },
+
 ]

@@ -50,14 +50,14 @@ let sideBarCategoryId;
 </script>
 
 
-<div class="tracking-wide text-base  ">
-    <h2 class="pb-8">Categories</h2>
+<div class="tracking-sm text-sm ">
+    <h2 class="pb-2 px-2">Categories</h2>
 
-    <ul class="flex flex-col gap-y-8 ">
+    <ul class="flex flex-col gap-y-1.5 ">
 
         {#each sideBarList as sideBarItem(sideBarItem.id)}
-        <div class="hover:bg-lightGray300 hover:rounded-md">
-            <a href="" class="cursor-pointer block px-3 py-2" id="most-popular" on:click={()=>handleDespatchSidebarId(sideBarItem)}>{sideBarItem.name}</a>
+        <div class="hover:bg-lightGray300 hover:rounded-md { sideBarCategoryId === sideBarItem.categoryId ? 'bg-lightGray300 rounded-md' : '' }">
+            <a href="" class="cursor-pointer block p-2" id="most-popular" on:click={()=>handleDespatchSidebarId(sideBarItem)}>{sideBarItem.name}</a>
           </div>
         {/each}
         {#if sideBarCategoryId}
