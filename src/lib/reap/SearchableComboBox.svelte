@@ -9,6 +9,7 @@
   let filterData = filter.data;
   let showDropdown = false;
   let dropDownRef;
+  let searchFilterValue = "";
 
   onMount(() => {
     document.addEventListener("click", handleClickOnDocument);
@@ -16,11 +17,8 @@
       if (dropDownRef && dropDownRef.contains(e.target)) showDropdown = true;
       else showDropdown = false;
     }
-    // selectedItemId=1
-    // selectedItemName=filter.data[0].state
   });
 
-  let searchFilterValue = "";
 
 
   $: handleSearch(searchFilterValue);

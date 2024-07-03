@@ -17,10 +17,10 @@ function handleApplyFilter(){
 
 function handleFilterData(e){
     let newFilterDataObj = e.detail;
-    console.log(newFilterDataObj,'newFilterDataObj')
+    // console.log(newFilterDataObj,'newFilterDataObj')
     filterDataObject={...filterDataObject,...newFilterDataObj}
 
-    console.log('filterDataObj', filterDataObject)
+    // console.log('filterDataObj', filterDataObject)
 
 }
 

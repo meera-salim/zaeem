@@ -6,14 +6,14 @@
     export let filter;
     export let selectedItemId = "";
     export let selectedItemName = "";
+    let searchFilterValue = "";
     export let multiSelectSavedID;
     let filterData = filter.data;
     let showDropdown = false;
     let dropDownRef;
-    let selectedItems=multiSelectSavedID?multiSelectSavedID:''
-    let objToDispatch = []
-  
-    
+    let selectedItems=[]
+    let isChecked = false;
+    let selectedValue =[]
   
     onMount(() => {
       document.addEventListener("click", handleClickOnDocument);
@@ -24,26 +24,44 @@
     
     });
 
-
-    function handleCheck(id){
-      
-      for(let i=0;i<selectedItems.length;i++){
-        if(Number(selectedItems[i].id) === Number(id))return true
-        else return false
-      }
+  $: handleSearch(searchFilterValue);
+  function handleSearch() {
+    // console.log('searchfilter',searchFilterValue)
+    // console.log(filter.data,'filter.data')
+    filterData = searchFilterValue
+      ? filter.data.filter((data) =>
+          data.item.toLowerCase().includes(searchFilterValue.toLowerCase())
+          
+        )
+      : filter.data;
   }
-  
+
   
 
   function handleListItemSelection(e) {
-      
+
+  let unChecked;
+  console.log(selectedValue)
+
+  isChecked = e.target.checked
+  console.log(isChecked,'isChecked')
+
       selectedItemId = e.target.closest("li").dataset.id;
       selectedItemName = e.target.closest('label').textContent;
-      console.log(selectedItems)
-      let newObj = [selectedItemId,selectedItemName]
+      let newObj = {selectedItemId,selectedItemName}
+      console.log(newObj)
       
-      objToDispatch = [...objToDispatch,newObj]
-      dispatch('handleDispatchFilterData', {[filter.filterCategory]:objToDispatch})
+      if(e.target.checked){
+        selectedItems.push({selectedItemId,selectedItemName})
+      } else{
+       unChecked = selectedItems.filter((obj)=>{
+        return obj['selectedItemId'] !== selectedItemId
+        })
+        selectedItems=unChecked
+        
+      }
+      console.log(selectedItems,'selected items')
+      dispatch('handleDispatchFilterData', {[filter.filterCategory]:selectedItems})
     }
 
   
@@ -72,6 +90,8 @@
         <input
           id="combobox" class="capitalize w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " role="combobox" aria-controls="options" aria-expanded="false"
           placeholder= {`Select ${filter.filterCategory}`}
+          bind:value={searchFilterValue}
+          
          
         />
         {#if selectedItemName}
@@ -121,7 +141,7 @@
             class=" absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
             id="options"
             role="listbox"
-            on:click|capture={handleListItemSelection}
+            on:click={handleListItemSelection}
           
           >
             {#each filterData as data}
@@ -145,10 +165,7 @@
                                 
                                     <div class="flex h-6 items-center">
                                     <input id={data.id} data-id={data.id} aria-describedby="comments-description" name={data.id} type="checkbox" value={data.id} class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                 
-                                    bind:group={selectedItems}
-    
-                                 
+
                                     > 
                                     <div class="pl-2">
                                       {data.item}

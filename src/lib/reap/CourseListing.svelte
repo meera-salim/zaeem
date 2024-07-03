@@ -33,14 +33,37 @@
     filteredVideos = localFilteredCopy;
   }
 
+  function handleFilterDataArray(array,objKey,coursesCopy){
+    console.log(coursesCopy)
+   
+    array.forEach((obj)=> {
+      if (obj.hasOwnProperty("selectedItemId")) {
+        appliedFilterVideos = coursesCopy.filter((courseObj) => {
+          if (courseObj.hasOwnProperty(objKey)) {
+            let selectedValue = Number(obj["selectedItemId"]);
+            
+
+            return selectedValue === Number(courseObj[objKey]);
+          }
+        });
+        coursesCopy = appliedFilterVideos;
+       
+      }
+    });
+    console.log(coursesCopy,'coursesCopy in data Array')
+    return coursesCopy
+      }
+    
   function handleShowApplyFilterData(localFilteredCopy) {
     let coursesCopy = [...localFilteredCopy];
-    
-    console.log(localFilteredCopy, 'localFilteredCopy')
 
     Object.entries(applyFilterDataObj).forEach(([key, value]) => {
       let objKey = key + "Id";
-      console.log('objKey', objKey)
+
+    //  if(Array.isArray(value)){
+    //    coursesCopy = handleFilterDataArray (value,objKey,coursesCopy)
+    //   } 
+      
       if (value.hasOwnProperty("selectedItemId")) {
         const [itemId, itemName] = Object.entries(value);
         appliedFilterVideos = coursesCopy.filter((courseObj) => {
@@ -53,7 +76,9 @@
         coursesCopy = appliedFilterVideos;
         console.log("videosCopy", coursesCopy);
       }
-    });
+    }
+  // }
+  );
     return coursesCopy
   
   }
