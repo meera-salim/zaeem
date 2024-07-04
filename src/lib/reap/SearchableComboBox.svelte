@@ -14,6 +14,7 @@
   onMount(() => {
     document.addEventListener("click", handleClickOnDocument);
     function handleClickOnDocument(e) {
+      console.log('dropDownRef',dropDownRef)
       if (dropDownRef && dropDownRef.contains(e.target)) showDropdown = true;
       else showDropdown = false;
     }
