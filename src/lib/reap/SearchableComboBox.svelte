@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher, onMount, onDestroy } from "svelte";
   const dispatch = createEventDispatcher();
 
 
@@ -18,6 +18,8 @@
       if (dropDownRef && dropDownRef.contains(e.target)) showDropdown = true;
       else showDropdown = false;
     }
+
+   
   });
 
 
@@ -32,7 +34,7 @@
   }
 
   function handleListItemSelection(e) {
-    e.preventDefault();
+
     selectedItemId = e.target.closest("li").dataset.id;
     selectedItemName = e.target.textContent;
     searchFilterValue=selectedItemName;
@@ -59,7 +61,7 @@
 <div>
   {#if filter.typeOfFilter === "comboBox"}
     <label
-      for="combobox"
+      for={filter.filterCategory}
       class="block text-sm font-medium leading-5 text-gray-900 capitalize"
       >{filter.filterCategory}</label
     >
@@ -68,7 +70,7 @@
       bind:this={dropDownRef}
     >
       <input
-        id="combobox" type="text" class="capitalize w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " role="combobox" aria-controls="options" aria-expanded="false"
+        id={filter.filterCategory} type="text" class="capitalize w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:text-sm lg:text-sm " role="combobox" aria-controls="options" aria-expanded="false"
         placeholder= {`Search ${filter.filterCategory}`}
         bind:value={searchFilterValue}
        
@@ -120,7 +122,7 @@
           class=" absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
           id="options"
           role="listbox"
-          on:click|capture={handleListItemSelection}
+          on:click={handleListItemSelection}
         >
           {#each filterData as data}
             {#if data}

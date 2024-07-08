@@ -1,5 +1,4 @@
 
-
 export const videos = [
     {
 "id": 1,
@@ -254,3 +253,102 @@ export const filters =[
     },
 
 ]
+
+
+
+export const generalStats = [
+    {
+        'statName':'courses',
+        'statValue':'64+'
+    },
+    {
+        'statName':'domains',
+        'statValue':'20+'
+    },
+    {
+        'statName':'learning centre',
+        'statValue':'640+'
+    },
+    {
+        'statName':'trainees enrolled',
+        'statValue':'6 lakh+'
+    },
+]
+
+export const collaboratingInstitutes = [
+    {
+        'institute':'MoRD',
+        'image':'/reap/mord-logo.png'
+    },
+    {
+        'institute':'NABARD',
+        'image':'/reap/nabard.jpg'
+    },
+    {
+        'institute':'NAR',
+        'image':'/reap/nar.jpg'
+    },
+    {
+        'institute':'IITM',
+        'image':'/reap/iit-logo.jpeg'
+    },
+    
+]
+
+
+export const testimonials =[
+    {
+        'name':'Manoj Kumar Jha',
+        'designation':'Suit specialist, Ranchi, Jharkhand',
+        'testimonialText':"REAP's Tailoring and stitching course was my lifeline. Learned new techniques and now, clients praise my work. ",
+        'img':'/reap/tailor.png',
+        'course':'Tailoring and Stiching',
+    },
+    {
+        'name':'Rishabh Yadav',
+        'designation':'Bike mechanic, Hissar, Haryana',
+        'testimonialText':'Bike repair and Servicing course  was my lifeline. Learned new techniques, tackled fancy fabrics.',
+        'img':'/reap/mechanic.webp',
+        'course':'Bike repair',
+        
+    },
+    {
+        'name':'Sai Saranya',
+        'designation':'Needleworker, Guntur, Andhra Pradesh',
+        'testimonialText':"REAP's Embroidery and needlecraft course was my lifeline. Learned new techniques and now, clients praise my work. Tailoring's not just a job anymore, it's my passion reborn.",
+        'img':'/reap/embroidery.webp',
+        'course':'Embroidery and needlecraft',
+    },
+
+    {
+        'name':'Manoj Kumar Jha',
+        'designation':'Suit specialist, Ranchi, Jharkhand',
+        'testimonialText':"REAP's Tailoring and stitching course was my lifeline. Learned new techniques and now, clients praise my work. Tailoring's not just a job anymore, it's my passion reborn.",
+        'img':'/reap/tailor.png',
+        'course':'Tailoring and Stiching',
+    },
+   
+
+]
+
+
+export const studentLifeCycle = [
+    {
+        'description':'Explore and find the course which suites your taste. Register with the learning center near you.',
+        'img':'/reap/life-cycle-1.png'
+    },
+    {
+        'description':'Reskill and upskill under the guidance of expert mentors.',
+        'img':'/reap/life-cycle-2.png'
+    },
+    {
+        'description':'Complete the course with flying colors',
+        'img':'/reap/life-cycle-3.png'
+    },
+    {
+        'description':'Be a star employee or start your own business.',
+        'img':'/reap/life-cycle-4.png'
+    },
+
+]
+
