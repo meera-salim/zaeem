@@ -16,7 +16,7 @@
 
 
 
-  $: selectedItemsChecked=[]
+  $: selectedItemsChecked=multiSelectSaved?multiSelectSaved:[];
  
 
   onMount(() => {
@@ -25,9 +25,9 @@
       if (dropDownRef && dropDownRef.contains(e.target)) showDropdown = true;
       else showDropdown = false;
 
-      if(multiSelectSaved) {selectedItemsChecked=multiSelectSaved
-        console.log(selectedItemsChecked)
-      }
+      // if(multiSelectSaved) {selectedItemsChecked=multiSelectSaved
+      //   console.log(selectedItemsChecked)
+      // }
     }
   });
 
@@ -89,7 +89,7 @@
 $:handleSelectedTagInInput(selectedItemsChecked)
   function handleSelectedTagInInput(){
     if(selectedItemsChecked.length>0)
-   selectedInputString =  selectedItemsChecked.map((obj)=> obj['item']).join(',')
+   selectedInputString =  selectedItemsChecked.map((obj)=> obj['item']).join(', ')
   
   }
 
@@ -98,6 +98,7 @@ $:handleSelectedTagInInput(selectedItemsChecked)
     showDropdown = false;
     selectedItemName = "";
     selectedItemId = "";
+    multiSelectSaved=''
     selectedItemsChecked=[]
     selectedInputString=''
     searchFilterValue=''
@@ -108,7 +109,7 @@ $:handleSelectedTagInInput(selectedItemsChecked)
 <div>
   {#if filter.typeOfFilter === "multiSelectComboBox"}
     <label
-      for="combobox"
+      for="multicombobox"
       class="block text-sm font-medium leading-5 text-gray-900 capitalize"
       >{filter.filterCategory}</label
     >
@@ -118,8 +119,8 @@ $:handleSelectedTagInInput(selectedItemsChecked)
     >
     
       <input
-        id="combobox"
-        class="capitalize w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        id="multicombobox"
+        class="capitalize text-sm w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:text-sm lg:text-sm"
         role="combobox"
         aria-controls="options"
         aria-expanded="false"
@@ -173,7 +174,7 @@ $:handleSelectedTagInInput(selectedItemsChecked)
       {#if showDropdown}
       <div class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
       <input 
-      id="combobox"
+      id="multicombobox"
       class="w-full rounded-md bg-white py-1.5 pl-3 pr-12 text-gray-900  ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       role="combobox"
       aria-controls="options"

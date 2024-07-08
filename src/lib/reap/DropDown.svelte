@@ -14,8 +14,6 @@
       if (dropDownRef && dropDownRef.contains(e.target)) showDropdown = true;
       else showDropdown = false;
     }
-    // selectedItemId=1
-    // selectedItemName=filter.data[0].state
   });
 
   function handleListItemSelection(e) {
@@ -28,7 +26,7 @@
     dispatch('handleDispatchFilterData', {[filter.filterCategory]:{selectedItemId,selectedItemName}})
   }
 
-function handleClearSelection(){
+  function handleClearSelection(){
   console.log('clear clicked')
  selectedItemId = "";
  selectedItemName = "";
@@ -36,16 +34,13 @@ function handleClearSelection(){
 }
 </script>
 
-<div class="relative inline-block text-left justify-between">
-  <div  bind:this={dropDownRef}>
+<div class="relative inline-block text-left ">
+  
     <label for="button" class="block text-sm font-medium leading-5 text-gray-900 capitalize">Status</label>
-    <div class="relative mt-2">
-    <button type="button" class="capitalize inline-flex space-between w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true"
-   
+    <div class="relative mt-2" bind:this={dropDownRef}>
+    <button type="button" class="capitalize inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white py-1.5 pl-3 pr-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50  md:text-sm lg:text-sm" id="menu-button" aria-expanded="true" aria-haspopup="true"
     on:focus={() => (showDropdown = true)}>
-    {selectedItemName ? selectedItemName :'Select'}
-    
-     
+      {selectedItemName ? selectedItemName :'Select'}
 
       {#if showDropdown === false}
       <div class="">
@@ -55,13 +50,13 @@ function handleClearSelection(){
       </div>
       {:else}
       <button  on:click={handleClearSelection}>
-      <svg
+      <svg class="-mr-1 h-5 w-5 size-4"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-4"
+          
           >
             <path
               stroke-linecap="round"
@@ -71,11 +66,9 @@ function handleClearSelection(){
           </svg>
         </button>
       {/if}
-    
-      
+
     </button>
   </div>
-</div>
 
  
 
